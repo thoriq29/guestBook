@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1004963126091",
+    "firebase_url": "https://writehere-13.firebaseio.com",
+    "project_id": "writehere-13",
+    "storage_bucket": "writehere-13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004963126091:android:858969b0c2691433",
+        "android_client_info": {
+          "package_name": "dev.thoriq.id.guestbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004963126091-3ivq5n4du69h1ds5ulbjpvjsjqrk2hv0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBW5pQ2QDmZdmOrP3RZ1Nzo7-vcZSiRqMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004963126091-3ivq5n4du69h1ds5ulbjpvjsjqrk2hv0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
