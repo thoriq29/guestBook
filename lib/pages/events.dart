@@ -236,7 +236,7 @@ class _EventsPageState extends State<EventsPage> {
           if(item.name.toString().toLowerCase().contains(query.toLowerCase())) {
             dummyListData.add(item);
           } else {
-            dummyListData.clear();
+            // dummyListData.clear();
           }
         });
         setState(() {
@@ -630,7 +630,7 @@ class _EventsPageState extends State<EventsPage> {
         }else if(!snapshots.hasData) {
           return Center(
             child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.green)));
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrange)));
         }else{
           if(snapshots.hasData && snapshots.data != null && (snapshots.data.documents.length == 0)) {
             if(this.mounted) {
@@ -699,17 +699,13 @@ class _EventsPageState extends State<EventsPage> {
                   Navigator.pushNamed(context, '/profile');
                 },
                 child: Container(
+                  child: Image.asset("assets/images/avatar-placeholder.png"),
                     decoration: new BoxDecoration(
                         shape: BoxShape.circle,
                         border: new Border.all(
                           color: Colors.grey[300],
                           width: 1,
                         ),
-                        image: new DecorationImage(
-                            fit: BoxFit.fitWidth,
-                            image: new NetworkImage(
-                                "http://diazworld.com/images/avatar-placeholder.png")
-                        )
                     )
                 ),
               )

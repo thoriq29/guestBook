@@ -544,7 +544,7 @@ class _DeactivedEventsPageState extends State<DeactivedEventsPage> {
         }else if(!snapshots.hasData) {
           return Center(
             child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.green)));
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrange)));
 
 
         }else{
@@ -604,8 +604,7 @@ class _DeactivedEventsPageState extends State<DeactivedEventsPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          // color: Colors.black,
+          icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
           onPressed: (){
             Navigator.of(context).pop();
           }

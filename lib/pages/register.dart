@@ -285,7 +285,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 35,
                 width: 35,
                 child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green)
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrange)
                 ),
               ),
               Padding(

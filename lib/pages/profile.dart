@@ -203,7 +203,7 @@ class _ProfilePageState extends State<ProfilePage>{
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(left: 20, top: 10),
-                child: Text("Share moment's",
+                child: Text("Share a Moment's",
                   style: TextStyle(
                     color: Colors.black45,
                     fontSize: 18,

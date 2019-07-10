@@ -24,7 +24,7 @@ class VisitedEventsPage extends StatefulWidget {
 
 class _VisitedEventsPageState extends State<VisitedEventsPage> {
 
-  String userId, email, name;
+  String userId, email, name, text = "Loading...";
   bool isLogin;
   Events events = Events();
   List<Events> list_of_event = new List<Events>();
@@ -63,6 +63,11 @@ class _VisitedEventsPageState extends State<VisitedEventsPage> {
         }
       } 
     });
+    Timer(Duration(seconds: 5), () {
+        setState(() {
+          text = "Data not found, Visit Some Event now";
+        });
+      });
   }
 
   void getEventIds() async {
@@ -167,7 +172,12 @@ class _VisitedEventsPageState extends State<VisitedEventsPage> {
     }
     return GestureDetector(
       onTap: () {
-        getImage(context, events.id);
+        Navigator.push(
+        context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => EditorPhotoPage(events.id, userId)
+          )
+        );
       },
       child: Container(
         height: 200,
@@ -279,7 +289,7 @@ class _VisitedEventsPageState extends State<VisitedEventsPage> {
         child: Column(
           children: <Widget>[
             Center(
-              child: Text("Loading..."),
+              child: Text(text),
               // child: Text("You have never visited events"),
             ),
             // Center(

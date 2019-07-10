@@ -12,6 +12,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:guestbook/pages/addGuest.dart';
 import 'package:guestbook/pages/readCsvPage.dart';
+import 'package:guestbook/pages/eventGallery.dart';
 import 'package:guestbook/models/guests.dart';
 
 
@@ -106,7 +107,7 @@ class _EventDetailPageState extends State<EventDetailPage> {
   }
 
   Future prepareDownloadDirectory() async {
-    _localPath = (await _findLocalPath()) + '/Download/GuestBookApp';
+    _localPath = (await _findLocalPath()) + '/Download/Belle';
   }
 
   Future<String> _findLocalPath() async {
@@ -233,7 +234,7 @@ class _EventDetailPageState extends State<EventDetailPage> {
           if (!snapshots.hasData){
             return Center(
                 child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.green)));
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrange)));
           }else{
             getTotalGuests();
             return ScrollConfiguration(
@@ -282,6 +283,7 @@ class _EventDetailPageState extends State<EventDetailPage> {
                             child: new Padding(
                               padding: const EdgeInsets.fromLTRB(15,0,5,0),
                               child: Container(
+                                child: Image.asset("assets/images/avatar-placeholder.png"),
 //                            padding: EdgeInsets.only(left: 10),
                                   decoration: new BoxDecoration(
                                       shape: BoxShape.circle,
@@ -289,11 +291,6 @@ class _EventDetailPageState extends State<EventDetailPage> {
                                         color: Colors.grey[300],
                                         width: 2,
                                       ),
-                                      image: new DecorationImage(
-                                          fit: BoxFit.fitWidth,
-                                          image: new NetworkImage(
-                                              document['image']??"http://diazworld.com/images/avatar-placeholder.png")
-                                      )
                                   )
                               ),
                             )
@@ -541,6 +538,14 @@ void _showDialogMessage(message) {
                   tooltip: "Image Gallery",
                   icon: Icon(Icons.image),
                   onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => EventGalleryPage(
+                          widget.eventId
+                      )
+                    )
+                  );
                     // Navigator.of(context).pop();
                   }
                 )
@@ -622,6 +627,8 @@ void _showDialogMessage(message) {
       floatingActionButtonLocation:
       FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        elevation: 1.0,
+        color: Colors.grey[100],
         child: new Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
