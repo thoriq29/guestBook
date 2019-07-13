@@ -31,6 +31,7 @@ class _EventDetailPageState extends State<EventDetailPage> {
 
   ScrollController _scrollController;
   bool lastStatus = true;
+  bool isOpen = false;
   int total = 0;
   var color = Colors.white;
   String _localPath;
@@ -56,6 +57,8 @@ class _EventDetailPageState extends State<EventDetailPage> {
   @override
   void initState() {
     super.initState();
+    getTotalGuests();
+    print(widget.eventId);
     makeDownloadDirectory();
     _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
@@ -162,6 +165,7 @@ class _EventDetailPageState extends State<EventDetailPage> {
         .where('at_event', isEqualTo:widget.eventId)
         .getDocuments();
     var documents = result.documents;
+    print(documents.length);
     if(documents.isNotEmpty){
       setState(() {
         total = documents.length;
@@ -172,6 +176,35 @@ class _EventDetailPageState extends State<EventDetailPage> {
       });
     }
     return null;
+  }
+
+  Future<DocumentSnapshot> getEventData() async {
+    DocumentSnapshot result = await Firestore.instance
+        .collection("events")
+        .document(widget.eventId)
+        .get();
+        print(result.data);
+    if(result.data.length != 0 ){
+      if(this.mounted) {
+        setState(() {
+          isOpen = result.data['open_now'];
+        });
+      }
+    } 
+    return null;
+  }
+
+  void setOpenBooth(isOpen) async {
+    if(isOpen) {
+      Firestore.instance.collection("events").document(widget.eventId).updateData({
+        'open_now': false,
+      });
+    } else {
+      Firestore.instance.collection("events").document(widget.eventId).updateData({
+        'open_now': true,
+      });
+    }
+
   }
 
   Widget _showButton() {
@@ -237,6 +270,7 @@ class _EventDetailPageState extends State<EventDetailPage> {
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrange)));
           }else{
             getTotalGuests();
+            getEventData();
             return ScrollConfiguration(
               behavior: ScrollBehavior(),
               child: GlowingOverscrollIndicator(

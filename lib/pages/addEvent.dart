@@ -1,7 +1,10 @@
+import 'dart:math' show cos, sqrt, asin;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:guestbook/utils/sharedPreferences.dart';
+
+import 'package:location/location.dart';
 
 PreferenceUtil appData = new PreferenceUtil();
 
@@ -18,16 +21,45 @@ class _AddEventPageState extends State<AddEventPage> {
   FocusNode _addressFocus = new FocusNode();
   TextEditingController eventNameController = TextEditingController();
   TextEditingController eventAddressController = TextEditingController();
-
+  var location = Location();
+  var currentLocation = <String, double>{};
+  double posisiLatUser, posisiLongUser;
   String category;
   bool isLoading = false, isLogin;
   int selectedCategory;
   String userId, email, name;
   DateTime _date = new DateTime.now();
 
+
+  calculateDistance(lat1, lon1, lat2, lon2){
+    var p = 0.017453292519943295;
+    var c = cos;
+    var a = 0.5 - c((lat2 - lat1) * p)/2 +
+    c(lat1 * p) * c(lat2 * p) *
+    (1 - c((lon2 - lon1) * p))/2;
+    return 12742 * asin(sqrt(a) * 1000);
+  }
+
+  getDistance(lat1, lon1, lat2, lon2) {
+    int R = 6371; // km
+    double x = (lon2 - lon1) * cos((lat1 + lat2) / 2);
+    double y = (lat2 - lat1);
+    double distance = sqrt(x * x + y * y) * R;
+    print("aa $distance");
+  }
+
   @override
   void initState() {
     super.initState();
+    double totalDistance = calculateDistance(-6.944876, 107.629545,-6.945561, 107.630151);
+    print(totalDistance.toString());
+    location.onLocationChanged().listen((currentLocation) {
+      posisiLatUser = currentLocation['latitude']??'';
+      posisiLongUser = currentLocation['longitude']??'';
+      
+    });
+    
+    
     appData.checkLogin().then((result) {
       if (result) {
         if(this.mounted) {

@@ -9,7 +9,6 @@ import 'package:photofilters/photofilters.dart';
 import 'package:image/image.dart' as imageLib;
 import 'package:image_picker/image_picker.dart';
 import 'package:guestbook/pages/sharedImageDetail.dart';
-import 'package:guestbook/pages/potoFilter.dart';
 
 class EditorPhotoPage extends StatefulWidget {
   EditorPhotoPage(this.eventId, this.userId);
@@ -78,7 +77,8 @@ class _MyAppState extends State<EditorPhotoPage>  with SingleTickerProviderState
      Map imagefile = await Navigator.push(
       context,
       new MaterialPageRoute(
-        builder: (context) => new PhotoFilterSelectors(
+        builder: (context) => new P
+hotoFilterSelector(
               title: Text("Photo Filter"),
               image: image,
               filters: presetFiltersList,

@@ -6,6 +6,8 @@ class Events {
   var is_active;
   var owner;
   var start_time;
+  var lat;
+  var lng;
   var id;
 
   Events(
@@ -16,7 +18,9 @@ class Events {
         this.is_active,
         this.owner,
         this.start_time,
-        this.id
+        this.id,
+        this.lat,
+        this.lng
       });
 
       factory    Events.fromData(Map<String, dynamic> data, id) {
@@ -28,7 +32,9 @@ class Events {
           is_active: data['is_active']??"",
           owner: data['owner'],
           start_time: data['start_time'],
-          id: id
+          id: id,
+          lat: data['lat'],
+          lng: data['lng']
         );
       }
       

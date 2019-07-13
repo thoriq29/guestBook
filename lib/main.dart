@@ -11,7 +11,7 @@ import 'package:guestbook/pages/profile.dart';
 import 'package:guestbook/pages/editProfile.dart';
 import 'package:guestbook/pages/changePassword.dart';
 import 'package:guestbook/pages/visitedEvents.dart';
-import 'package:guestbook/pages/imageEditor.dart';
+import 'package:guestbook/pages/eventNearMe.dart';
 
 PreferenceUtil appData = new PreferenceUtil();
 
@@ -49,6 +49,7 @@ class GuestBookApp extends StatelessWidget {
           '/editprofile': (BuildContext context) => EditProfilePage(),
           '/changePassword': (BuildContext context) => ChangePasswordPage(),
           '/visitedEvents': (BuildContext context) => VisitedEventsPage(),
+          '/nearMe': (BuildContext context) => EventNearMePage(),
         }
     );
   }

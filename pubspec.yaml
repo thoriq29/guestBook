@@ -38,6 +38,8 @@ dependencies:
   font_awesome_flutter: ^8.0.1 
   image_picker_saver: ^0.1.0
   http:  
+  location: "^1.4.1"
+  google_maps_flutter: "^0.5.13"
   # esys_flutter_share: ^1.0.2
   # flutter_downloader: ^1.0.1
   # flutter_full_pdf_viewer: ^1.0.4

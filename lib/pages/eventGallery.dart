@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:guestbook/pages/sharedImageDetail.dart';
+import 'package:guestbook/pages/eventLovedPict.dart';
 
 final List<String> imgList = [
   'assets/images/wedding_decoration.jpg',
@@ -315,7 +316,19 @@ class _EventGalleryState extends State<EventGalleryPage> {
             Navigator.of(context).pop();
           }
         ),
-        title: Text("Gallery & Shared Moments"),
+        actions: <Widget>[
+          IconButton(
+            color: Colors.deepOrange,
+            tooltip: "Loved Moments",
+            icon: Icon(Icons.favorite),
+            onPressed: (){
+              Navigator.push(context, 
+                MaterialPageRoute(builder: (context) => LovedImagePage(widget.eventId))
+              );
+            }
+          )
+        ],
+        title: Text("Gallery Moments"),
       ),
       body: Stack(
         children: <Widget>[

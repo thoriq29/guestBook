@@ -224,6 +224,36 @@ class _ProfilePageState extends State<ProfilePage>{
           padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
           child: new Divider(color: Colors.grey),
         ),
+        // GestureDetector(
+        //   onTap: () {
+        //     Navigator.pushNamed(context, '/nearMe');
+        //   },
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: <Widget>[
+        //       Padding(
+        //         padding: EdgeInsets.only(left: 20, top: 10),
+        //         child: Text("Events near Me",
+        //           style: TextStyle(
+        //             color: Colors.black45,
+        //             fontSize: 18,
+        //             fontWeight: FontWeight.w400,
+        //             fontFamily: "Roboto"
+        //           ),
+        //         ),
+        //       ),
+        //       Padding(
+        //         padding: EdgeInsets.only(right: 27, top: 18),
+        //         child: Icon(Icons.arrow_forward, color: Colors.deepOrange),
+        //       )
+        //     ],
+        //   ),
+        // ),
+        // Container(
+        //   width: MediaQuery.of(context).size.width,
+        //   padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+        //   child: new Divider(color: Colors.grey),
+        // ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
