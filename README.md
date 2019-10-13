@@ -1,6 +1,5 @@
 # Belle 
 
-A Flutter Guest Book App
 Belle merupakan Aplikasi Buku Tamu berbasis android yang dibuild menggunakan Flutter.
 
 Belle juga pernah juara pada Dicoding Challenge : 
